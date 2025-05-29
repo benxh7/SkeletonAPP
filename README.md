@@ -2,8 +2,6 @@
 
 <div align="center">
 
-[![Contributors][contributors-shield]][contributors-url]
-
 ## Aplicacion Mobil SqueletonAPP
 
 SkeletonAPP es una aplicación híbrida desarrollada con Ionic y Angular que permite a los usuarios iniciar sesión y completar un formulario de información adicional. Incluye validaciones, animaciones en campos de entrada y un selector de fecha basado en Angular Material.
