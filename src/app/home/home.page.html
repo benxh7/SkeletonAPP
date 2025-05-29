@@ -1,20 +1,74 @@
+<!-- Header de la Aplicación -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title class="header">SkeletonAPP</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<!-- Contenido de la aplicacion -->
+<ion-content class="home-content" fullscreen>
+  <!-- Cabeza de la pagina Home -->
+  <div class="home-header">
+    <h1>¡Bienvenido/a {{ username }}!</h1>
   </div>
+
+  <!-- Tarjeta de información del usuario -->
+  <ion-card class="home-card">
+    <h3>Información adicional</h3>
+
+    <!-- Formulario para el ingreso de datos en Home -->
+    <form [formGroup]="infoForm">
+
+      <!-- Nombre -->
+      <ion-item lines="full">
+        <ion-label class="text-label" position="floating">Nombre</ion-label>
+        <ion-input #nombreInput formControlName="nombre"></ion-input>
+      </ion-item>
+      
+      <!-- Apellido -->
+      <ion-item lines="full">
+        <ion-label class="text-label" position="floating">Apellido</ion-label>
+        <ion-input #apellidoInput formControlName="apellido"></ion-input>
+      </ion-item>
+      
+      <!-- Nivel de Educación -->
+      <ion-item lines="full">
+        <ion-label>Nivel de educación</ion-label>
+        <ion-select formControlName="educacion">
+          <ion-select-option value="bas">Basica</ion-select-option>
+          <ion-select-option value="med">Media</ion-select-option>
+          <ion-select-option value="sup">Superior</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <!-- Fecha de Nacimiento -->
+      <!-- Aqui usamos el datapicker de Angular Material -->
+      <mat-form-field lines="full" appearance="fill" class="full-width">
+        <mat-label>Fecha nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fnac">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+      <!-- Botones para limpiar y mostrar datos -->
+      <!-- El boton de limpiar tiene una animacion que va de izquierda a derecha para luego eliminar -->
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block" color="medium" (click)="limpiar()">Limpiar</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" (click)="mostrar()">Mostrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card>
 </ion-content>
+
+<!-- Footer de la Aplicación -->
+<ion-footer class="footer" slot="fixed">
+  <ion-toolbar>
+    <ion-title>Desarrollado por Benjamin</ion-title>
+  </ion-toolbar>
+</ion-footer>
